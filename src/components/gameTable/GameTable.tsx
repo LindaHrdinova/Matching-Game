@@ -1,5 +1,5 @@
 import '../../App.css';
-import { Cards } from '../cards/Cards';
+import { Cards } from '../Cards/Cards';
 
 export const GameTable: React.FC = () => {
   return (

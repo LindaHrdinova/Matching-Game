@@ -1,3 +1,6 @@
+import { useState, useEffect } from 'react';
+import { Card } from '../Card/Card';
+
 import { IconType } from 'react-icons';
 import { SiCss3 } from 'react-icons/si';
 import { FaReact } from 'react-icons/fa';
@@ -9,7 +12,6 @@ import { SiTypescript } from 'react-icons/si';
 import { BsFiletypeSql } from 'react-icons/bs';
 import { RiTailwindCssFill } from 'react-icons/ri';
 import { FaSass } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
 
 const cardList: { Icon: IconType; color: string }[] = [
   { Icon: SiCss3, color: '#264de4' },
@@ -89,25 +91,14 @@ export const Cards: React.FC = () => {
     <>
       {cardList.map(({ Icon, color }, index) => {
         return (
-          <div
-            className={flippedCards[index] ? 'card disabledCard' : 'card'}
+          <Card
+            Icon={Icon}
+            color={color}
+            flippedCard={flippedCards[index]}
+            index={index}
             key={index}
-            onClick={() => handleTurnCard(index, Icon)}
-            role={'button'}
-          >
-            <div
-              className={
-                flippedCards[index] ? 'card-inner flipped' : 'card-inner'
-              }
-            >
-              <div className="card-front">
-                <Icon color={color} size={80} />
-              </div>
-              <div className="card-back">
-                <span>tech</span> <span>stack</span>
-              </div>
-            </div>
-          </div>
+            handleTurnCard={handleTurnCard}
+          />
         );
       })}
     </>
