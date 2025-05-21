@@ -13,7 +13,7 @@ const fisherYatesShuffle = (list: typeof originalCardList) => {
 };
 
 export const GameTable: React.FC = () => {
-  const [pairsFound, setPairsFound] = useState<number>(10);
+  const [pairsFound, setPairsFound] = useState<number>(0);
   const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
   const [cardList, setCardList] = useState(() => {
     return fisherYatesShuffle(originalCardList);
