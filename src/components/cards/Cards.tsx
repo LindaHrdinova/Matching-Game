@@ -20,6 +20,7 @@ export const Cards: React.FC = () => {
   const [cardList, setCardList] = useState(() => {
     return fisherYatesShuffle(originalCardList);
   });
+  const [pairsFound, setPairsFound] = useState<number>(0);
 
   const flipCard = (index: number, state: boolean) => {
     const newFlippedCards: boolean[] = [...flippedCards];
@@ -37,6 +38,7 @@ export const Cards: React.FC = () => {
     } else if (firstCard.icon === icon) {
       setFirstCard({ index: -1, icon: '' });
       setIsBoardLocked(true);
+      setPairsFound(pairsFound + 1);
       setTimeout(() => {
         setIsBoardLocked(false);
       }, 600);
@@ -49,6 +51,16 @@ export const Cards: React.FC = () => {
         setIsBoardLocked(false);
       }, 1000);
     }
+  };
+
+  const handleRestartGame = () => {
+    setIsBoardLocked(true);
+    setFlippedCards(Array(cardList.length).fill(false));
+    setPairsFound(0);
+    setTimeout(() => {
+      setCardList(fisherYatesShuffle(originalCardList));
+      setIsBoardLocked(false);
+    }, 700);
   };
 
   return (
@@ -65,6 +77,9 @@ export const Cards: React.FC = () => {
           />
         );
       })}
+      {pairsFound === cardList.length / 2 ? (
+        <button onClick={handleRestartGame}>nová hra</button>
+      ) : null}
     </>
   );
 };
