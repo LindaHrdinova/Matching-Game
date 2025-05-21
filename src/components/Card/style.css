@@ -28,7 +28,7 @@
   backface-visibility: hidden;
   border-radius: 5px;
   box-shadow: 0 0 10px #0003;
-  border: 2px solid #dadada;
+  border: 2px solid #f1f1f1;
 }
 
 .card-front {
@@ -41,7 +41,7 @@
   background: linear-gradient(180deg, #bad9f8 0%, rgba(129, 178, 250, 1) 100%);
   color: #004aad;
   font-family: sans-serif;
-  border: 2px solid #c0c0c0;
+  border: 6px solid #f1f1f1;
   user-select: none;
   display: flex;
   flex-direction: column;
