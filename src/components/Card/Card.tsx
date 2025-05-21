@@ -30,7 +30,7 @@ export const Card: React.FC<CardProps> = ({
     >
       <div className={flippedCard ? 'card-inner flipped' : 'card-inner'}>
         <div className="card-front">
-          <Icon color={color} size={80} />
+          <Icon color={color} className="card-icon" />
         </div>
         <div className="card-back">
           <span>tech</span> <span>stack</span>

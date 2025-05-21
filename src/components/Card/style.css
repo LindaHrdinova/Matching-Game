@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .card {
   aspect-ratio: 1 / 1;
   width: 100px;
@@ -34,6 +36,7 @@
 .card-front {
   background-color: #f1f1f1;
   transform: rotateY(180deg);
+  font-size: 83px;
 }
 
 .card-back {
@@ -46,8 +49,45 @@
   display: flex;
   flex-direction: column;
   font-size: 1.2rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.card-back:hover,
+.card-back:focus {
+  box-shadow: 0 0 10px #004aad;
 }
 
 .disabledCard {
   pointer-events: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .card {
+    aspect-ratio: 1 / 1;
+    width: 80px;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .card-front {
+    font-size: 63px;
+  }
+
+  .card-back {
+    background-color: #004aad;
+    background: linear-gradient(180deg, #bad9f8 0%, rgba(129, 178, 250, 1) 100%);
+    color: #004aad;
+    font-family: sans-serif;
+    border: 5px solid #f1f1f1;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  body {
+    background-color: lightblue;
+  }
 }

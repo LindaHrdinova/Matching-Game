@@ -52,7 +52,7 @@ export const GameTable: React.FC = () => {
       </div>
       {pairsFound === cardList.length / 2 ? (
         <button className="game--btnRestartGame" onClick={handleRestartGame}>
-          nová hra
+          new game
         </button>
       ) : null}
     </div>
