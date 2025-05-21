@@ -42,6 +42,19 @@ export const Cards: React.FC = () => {
   const [firstCard, setFirstCard] = useState({ index: -1, icon: '' });
   const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
 
+  useEffect(() => {
+    const fisherYatesShuffle = () => {
+      for (let i = cardList.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let k = cardList[i];
+        cardList[i] = cardList[j];
+        cardList[j] = k;
+        // source: https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort_random2
+      }
+    };
+    fisherYatesShuffle();
+  }, []);
+
   const handleTurnCard = (index: number, icon: any) => {
     if (flippedCards[index]) return;
     if (isBoardLocked || flippedCards[index]) return;
