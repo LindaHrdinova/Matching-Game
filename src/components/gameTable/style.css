@@ -1,0 +1,30 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game--btnRestartGame {
+  margin-top: 20px;
+  padding: 0.7em 2em;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #004aad;
+  border: 1px solid #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #0003;
+  cursor: pointer;
+  user-select: none;
+}
+
+.game--btnRestartGame:hover {
+  box-shadow: 0 0 10px #004aad;
+  border: 1px solid #f1f1f1;
+}
+
+.gameTable {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}

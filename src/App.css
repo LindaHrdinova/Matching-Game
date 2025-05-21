@@ -1,11 +1,1 @@
-.game {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
-.gameTable {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
