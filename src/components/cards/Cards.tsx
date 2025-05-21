@@ -35,53 +35,41 @@ const cardList: { Icon: IconType; color: string }[] = [
 ];
 
 export const Cards: React.FC = () => {
-  const [flippedCards, setFlippedCards] = useState<Array<Boolean>>(
+  const [flippedCards, setFlippedCards] = useState<boolean[]>(
     Array(cardList.length).fill(false),
   );
 
-  useEffect(() => {
-    const count = flippedCards.filter((card) => card).length % 2;
-    console.log('otočené, dělení: ' + count);
-    if (count === 0) {
-      console.log('dvě karty jsou otočené');
-      checkPairs();
-    }
-  }, [flippedCards]);
+  const [firstCard, setFirstCard] = useState({ index: -1, icon: '' });
+  const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
 
-  const handleTurnCard = (index: number) => {
-    const updated = [...flippedCards];
-    updated[index] = !updated[index];
-    setFlippedCards(updated);
-    console.log(updated);
-  };
+  const handleTurnCard = (index: number, icon: any) => {
+    if (flippedCards[index]) return;
+    if (isBoardLocked || flippedCards[index]) return;
 
-  const checkPairs = () => {
-    console.log('dvojice');
-
-    const turnedIndexes: number[] = flippedCards
-      .map((flipped, index) => (flipped ? index : 'drop'))
-      .filter((index) => index !== 'drop');
-
-    console.log(turnedIndexes);
-    console.log('délka, index: ' + cardList.length, turnedIndexes);
-
-    if (turnedIndexes.length < 2) return;
-
-    const [firstIndex, secondIndex] = turnedIndexes;
-    const firstCard = cardList[firstIndex];
-    const secondCard = cardList[secondIndex];
-    console.log('turnedIndexes:', turnedIndexes);
-
-    if (firstCard.color === secondCard.color) {
-      console.log('Dvojice nalezena!');
-    } else {
+    console.log(index);
+    const newFlippedCards: boolean[] = [...flippedCards];
+    newFlippedCards[index] = true;
+    setFlippedCards(newFlippedCards);
+    if (firstCard.index === -1) {
+      setFirstCard({ index, icon });
+    } else if (firstCard.icon === icon) {
+      setFirstCard({ index: -1, icon: '' });
+      setIsBoardLocked(true);
       setTimeout(() => {
-        const updated = [...flippedCards];
-        updated[firstIndex] = false;
-        updated[secondIndex] = false;
-        setFlippedCards(updated);
+        setIsBoardLocked(false);
+      }, 600);
+    } else {
+      setIsBoardLocked(true);
+      setTimeout(() => {
+        const newFlippedCards: boolean[] = [...flippedCards];
+        newFlippedCards[index] = false;
+        newFlippedCards[firstCard.index] = false;
+        setFlippedCards(newFlippedCards);
+        setFirstCard({ index: -1, icon: '' });
+        setIsBoardLocked(false);
       }, 1000);
     }
+    console.log(firstCard);
   };
 
   return (
@@ -89,12 +77,15 @@ export const Cards: React.FC = () => {
       {cardList.map(({ Icon, color }, index) => {
         return (
           <div
-            className="card"
+            className={flippedCards[index] ? 'card disabledCard' : 'card'}
             key={index}
-            onClick={() => handleTurnCard(index)}
+            onClick={() => handleTurnCard(index, Icon)}
+            role={'button'}
           >
             <div
-              className={`card-inner ${flippedCards[index] ? 'flipped' : ''}`}
+              className={
+                flippedCards[index] ? 'card-inner flipped' : 'card-inner'
+              }
             >
               <div className="card-front">
                 <Icon color={color} size={80} />
