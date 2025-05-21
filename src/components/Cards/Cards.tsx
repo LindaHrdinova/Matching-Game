@@ -1,66 +1,69 @@
 import { useState } from 'react';
 import { Card } from '../Card/Card';
-import { cardList as originalCardList } from '../../data/cardsData';
+import { IconType } from 'react-icons';
 
-const fisherYatesShuffle = (list: typeof originalCardList) => {
-  const newList = [...list];
-  for (let i = newList.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [newList[i], newList[j]] = [newList[j], newList[i]];
-  }
-  return newList;
-};
+interface CardListProps {
+  Icon: IconType;
+  color: string;
+}
 
-export const Cards: React.FC = () => {
-  const [flippedCards, setFlippedCards] = useState<boolean[]>(
-    Array(originalCardList.length).fill(false),
-  );
-  const [firstCard, setFirstCard] = useState({ index: -1, icon: '' });
-  const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
-  const [cardList, setCardList] = useState(() => {
-    return fisherYatesShuffle(originalCardList);
+interface CardsProps {
+  pairsFound: number;
+  cardList: CardListProps[];
+  isBoardLocked: boolean;
+  flippedCards: boolean[];
+  onSetPairsFound: (value: number) => void;
+  onSetFlippedCards: (value: boolean[]) => void;
+  onSetIsBoardLocked: (value: boolean) => void;
+}
+
+export const Cards: React.FC<CardsProps> = ({
+  pairsFound,
+  cardList,
+  isBoardLocked,
+  flippedCards,
+  onSetPairsFound,
+  onSetFlippedCards,
+  onSetIsBoardLocked,
+}) => {
+  const [firstFlippedCard, setFirstFlippedCard] = useState<{
+    index: number;
+    Icon: IconType | null;
+  }>({
+    index: -1,
+    Icon: null,
   });
-  const [pairsFound, setPairsFound] = useState<number>(0);
+  const { index: firstFlippedIndex, Icon: firstFlippedIcon } = firstFlippedCard;
 
   const flipCard = (index: number, state: boolean) => {
     const newFlippedCards: boolean[] = [...flippedCards];
     newFlippedCards[index] = state;
-    setFlippedCards(newFlippedCards);
+    onSetFlippedCards(newFlippedCards);
   };
 
-  const handleTurnCard = (index: number, icon: any) => {
+  const handleTurnCard = (index: number, Icon: IconType) => {
     if (isBoardLocked || flippedCards[index]) return;
 
     flipCard(index, true);
 
-    if (firstCard.index === -1) {
-      setFirstCard({ index, icon });
-    } else if (firstCard.icon === icon) {
-      setFirstCard({ index: -1, icon: '' });
-      setIsBoardLocked(true);
-      setPairsFound(pairsFound + 1);
+    if (firstFlippedIndex === -1) {
+      setFirstFlippedCard({ index, Icon });
+    } else if (firstFlippedIcon === Icon) {
+      setFirstFlippedCard({ index: -1, Icon: null });
+      onSetIsBoardLocked(true);
+      onSetPairsFound(pairsFound + 1);
       setTimeout(() => {
-        setIsBoardLocked(false);
+        onSetIsBoardLocked(false);
       }, 600);
     } else {
-      setIsBoardLocked(true);
+      onSetIsBoardLocked(true);
       setTimeout(() => {
         flipCard(index, false);
-        flipCard(firstCard.index, false);
-        setFirstCard({ index: -1, icon: '' });
-        setIsBoardLocked(false);
+        flipCard(firstFlippedIndex, false);
+        setFirstFlippedCard({ index: -1, Icon: null });
+        onSetIsBoardLocked(false);
       }, 1000);
     }
-  };
-
-  const handleRestartGame = () => {
-    setIsBoardLocked(true);
-    setFlippedCards(Array(cardList.length).fill(false));
-    setPairsFound(0);
-    setTimeout(() => {
-      setCardList(fisherYatesShuffle(originalCardList));
-      setIsBoardLocked(false);
-    }, 700);
   };
 
   return (
@@ -77,9 +80,6 @@ export const Cards: React.FC = () => {
           />
         );
       })}
-      {pairsFound === cardList.length / 2 ? (
-        <button onClick={handleRestartGame}>nová hra</button>
-      ) : null}
     </>
   );
 };
