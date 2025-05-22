@@ -20,6 +20,7 @@ h1 {
   font-family: "Space Grotesk", sans-serif;
   color: #0a2343;
   border: 1px solid #f1f1f1;
+  background-color: #f1f1f1;
   border-radius: 8px;
   box-shadow: 0 0 10px #0003;
   cursor: pointer;
@@ -29,6 +30,7 @@ h1 {
 .game--btnRestartGame:hover {
   box-shadow: 0 0 10px #004aad;
   border: 1px solid #f1f1f1;
+  background-color: #f1f1f1;
 }
 
 .gameTable {

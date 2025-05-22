@@ -14,6 +14,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.55s;
+  z-index: 3;
 }
 
 .flipped {
@@ -36,7 +37,9 @@
 .card-front {
   background-color: #f1f1f1;
   transform: rotateY(180deg);
-  font-size: 83px;
+  font-size: 80px;
+  backface-visibility: hidden;
+  z-index: 1;
 }
 
 .card-back {
@@ -50,6 +53,10 @@
   flex-direction: column;
   font-size: 1.2rem;
   font-family: 'Orbitron', sans-serif;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+  z-index: 2;
+
 }
 
 .card-back:hover,
@@ -68,7 +75,7 @@
   }
 
   .card-front {
-    font-size: 63px;
+    font-size: 60px;
   }
 
   .card-back {
@@ -107,9 +114,5 @@
   .card-back {
     border: 5px solid #f1f1f1;
     font-size: 0.8rem;
-  }
-
-  body {
-    background-color: lightgoldenrodyellow;
   }
 }
