@@ -21,15 +21,34 @@ export const GameTable: React.FC = () => {
   const [flippedCards, setFlippedCards] = useState<boolean[]>(
     Array(cardList.length).fill(false),
   );
+  const [showRestartButton, setShowRestartButton] = useState<boolean>(false);
+  const [attempCounter, setAttemptCounter] = useState<number>(0);
 
   useEffect(() => {
     setFlippedCards(Array(cardList.length).fill(false));
   }, [cardList]);
 
+  useEffect(() => {
+    if (pairsFound === cardList.length / 2) {
+      const timeOutRestartButton = setTimeout(() => {
+        setShowRestartButton(true);
+      }, 600);
+      return () => clearTimeout(timeOutRestartButton);
+    }
+  }, [pairsFound, cardList.length]);
+
+  const RestartButton = () => (
+    <button className="game--btnRestartGame" onClick={handleRestartGame}>
+      new game
+    </button>
+  );
+
   const handleRestartGame = () => {
     setIsBoardLocked(true);
     setFlippedCards(Array(cardList.length).fill(false));
     setPairsFound(0);
+    setAttemptCounter(0);
+    setShowRestartButton(false);
     setTimeout(() => {
       setCardList(fisherYatesShuffle(originalCardList));
       setIsBoardLocked(false);
@@ -39,22 +58,21 @@ export const GameTable: React.FC = () => {
   return (
     <div className="game">
       <h1>Matching game</h1>
+      <p className="game__attempCounter">Attempts: {attempCounter}</p>
       <div className="gameTable">
         <Cards
           pairsFound={pairsFound}
           cardList={cardList}
           isBoardLocked={isBoardLocked}
           flippedCards={flippedCards}
+          attempCounter={attempCounter}
           onSetPairsFound={setPairsFound}
           onSetFlippedCards={setFlippedCards}
           onSetIsBoardLocked={setIsBoardLocked}
+          onSetAttemptCounter={setAttemptCounter}
         />
       </div>
-      {pairsFound === cardList.length / 2 ? (
-        <button className="game--btnRestartGame" onClick={handleRestartGame}>
-          new game
-        </button>
-      ) : null}
+      {showRestartButton ? <RestartButton /> : null}
     </div>
   );
 };

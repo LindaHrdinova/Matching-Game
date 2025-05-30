@@ -2,7 +2,8 @@
 
 h1 {
   font-family: 'Space Grotesk', sans-serif;
-  color: #0a2343
+  color: #0a2343;
+  margin-bottom: 5px;
 }
 
 .game {
@@ -33,15 +34,26 @@ h1 {
   background-color: #f1f1f1;
 }
 
+.game__attempCounter {
+  color: #004aad;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .gameTable {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
 }
 
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: 2.7em;
+  }
+
+  .gameTable {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
   }
 }
 

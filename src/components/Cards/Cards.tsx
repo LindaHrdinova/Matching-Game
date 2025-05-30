@@ -12,9 +12,11 @@ interface CardsProps {
   cardList: CardListProps[];
   isBoardLocked: boolean;
   flippedCards: boolean[];
+  attempCounter: number;
   onSetPairsFound: (value: number) => void;
   onSetFlippedCards: (value: boolean[]) => void;
   onSetIsBoardLocked: (value: boolean) => void;
+  onSetAttemptCounter: (value: number) => void;
 }
 
 export const Cards: React.FC<CardsProps> = ({
@@ -22,9 +24,11 @@ export const Cards: React.FC<CardsProps> = ({
   cardList,
   isBoardLocked,
   flippedCards,
+  attempCounter,
   onSetPairsFound,
   onSetFlippedCards,
   onSetIsBoardLocked,
+  onSetAttemptCounter,
 }) => {
   const [firstFlippedCard, setFirstFlippedCard] = useState<{
     index: number;
@@ -52,11 +56,13 @@ export const Cards: React.FC<CardsProps> = ({
       setFirstFlippedCard({ index: -1, Icon: null });
       onSetIsBoardLocked(true);
       onSetPairsFound(pairsFound + 1);
+      onSetAttemptCounter(attempCounter + 1);
       setTimeout(() => {
         onSetIsBoardLocked(false);
       }, 600);
     } else {
       onSetIsBoardLocked(true);
+      onSetAttemptCounter(attempCounter + 1);
       setTimeout(() => {
         flipCard(index, false);
         flipCard(firstFlippedIndex, false);
