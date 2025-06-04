@@ -44,7 +44,7 @@
 
 .card-back {
   background-color: #004aad;
-  background: linear-gradient(180deg, #bad9f8 0%, rgba(129, 178, 250, 1) 100%);
+  background: linear-gradient(180deg, #bad9f8 0%, #81b1fa 100%);
   color: #004aad;
   font-family: sans-serif;
   border: 6px solid #f1f1f1;
