@@ -12,7 +12,11 @@ const fisherYatesShuffle = (list: typeof originalCardList) => {
   return newList;
 };
 
-export const GameTable: React.FC = () => {
+interface GameTableProp {
+  numOfPlayers: number;
+}
+
+export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
   const [pairsFound, setPairsFound] = useState<number>(0);
   const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
   const [cardList, setCardList] = useState(() => {
@@ -58,7 +62,16 @@ export const GameTable: React.FC = () => {
   return (
     <div className="game">
       <h1>Matching game</h1>
-      <p className="game__attempCounter">Attempts: {attempCounter}</p>
+      {numOfPlayers === 1 ? (
+        <p className="game__attempCounter">Attempts: {attempCounter}</p>
+      ) : (
+        <>
+          <p className="game__attempCounter">
+            Player 1 attempts: {attempCounter} | Player 2 attempts: 0
+          </p>
+        </>
+      )}
+
       <div className="gameTable">
         <Cards
           pairsFound={pairsFound}

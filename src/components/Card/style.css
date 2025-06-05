@@ -56,7 +56,6 @@
   transform: rotateY(0deg);
   backface-visibility: hidden;
   z-index: 2;
-
 }
 
 .card-back:hover,

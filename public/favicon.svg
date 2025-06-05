@@ -3,38 +3,26 @@
   <defs>
     <style>
       .cls-1 {
-        letter-spacing: 0em;
+        fill: #0a2343;
       }
 
       .cls-2 {
-        letter-spacing: -.01em;
-      }
-
-      .cls-3 {
-        fill: url(#Nepojmenovaný_přechod_11);
-      }
-
-      .cls-4 {
-        letter-spacing: -.02em;
-      }
-
-      .cls-5 {
         fill: #fff;
       }
 
-      .cls-6 {
-        fill: #004aad;
-        font-family: Orbitron-Regular, Orbitron;
-        font-size: 21.76px;
-        font-variation-settings: 'wght' 400;
+      .cls-3 {
+        fill: url(#Nepojmenovaný_přechod);
       }
     </style>
-    <linearGradient id="Nepojmenovaný_přechod_11" data-name="Nepojmenovaný přechod 11" x1="50" y1="95" x2="50" y2="5" gradientUnits="userSpaceOnUse">
+    <linearGradient id="Nepojmenovaný_přechod" data-name="Nepojmenovaný přechod" x1="50" y1="5" x2="50" y2="95" gradientTransform="translate(0 100) scale(1 -1)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#81b1fa"/>
       <stop offset="1" stop-color="#bad9f8"/>
     </linearGradient>
   </defs>
-  <rect class="cls-5" width="100" height="100" rx="4.98" ry="4.98"/>
+  <rect class="cls-2" width="100" height="100" rx="4.98" ry="4.98"/>
   <rect class="cls-3" x="5" y="5" width="90" height="90"/>
-  <text class="cls-6" transform="translate(23.56 42.65)"><tspan x="0" y="0">t</tspan><tspan class="cls-4" x="8.92" y="0">e</tspan><tspan class="cls-2" x="23.54" y="0">c</tspan><tspan x="38.34" y="0">h</tspan><tspan x="-7.3" y="26.11">st</tspan><tspan class="cls-1" x="16.55" y="26.11">a</tspan><tspan class="cls-4" x="31.43" y="26.11">c</tspan><tspan x="46.12" y="26.11">k</tspan></text>
+  <g>
+    <path class="cls-1" d="M16.11,63.69V30.08h11.76l5.81,29.28h.86l5.81-29.28h11.76v33.6h-6.14v-28.94h-.86l-5.76,28.94h-10.46l-5.76-28.94h-.86v28.94h-6.14Z"/>
+    <path class="cls-1" d="M70.06,64.36c-2.3,0-4.39-.52-6.26-1.56-1.87-1.04-3.36-2.56-4.46-4.56-1.1-2-1.66-4.44-1.66-7.32v-8.06c0-4.32,1.22-7.64,3.65-9.96,2.43-2.32,5.73-3.48,9.89-3.48s7.32,1.1,9.58,3.29c2.26,2.19,3.38,5.16,3.38,8.9v.19h-6.24v-.38c0-1.18-.25-2.26-.74-3.22-.5-.96-1.24-1.72-2.23-2.28-.99-.56-2.24-.84-3.74-.84-2.24,0-4,.69-5.28,2.06-1.28,1.38-1.92,3.25-1.92,5.62v8.26c0,2.34.64,4.22,1.92,5.64,1.28,1.42,3.07,2.14,5.38,2.14s3.98-.61,5.04-1.82c1.06-1.21,1.58-2.75,1.58-4.61v-.48h-7.97v-5.38h14.21v17.18h-5.86v-3.22h-.86c-.22.54-.58,1.12-1.08,1.73-.5.61-1.24,1.12-2.23,1.54-.99.42-2.35.62-4.08.62Z"/>
+  </g>
 </svg>

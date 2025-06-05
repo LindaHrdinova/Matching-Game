@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+
+/* --- OPTION --- */
+.option {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.option__button {
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  margin-top: 45px;
+}
+
+.option__icon {
+  color: #0a2343;
+  font-size: 2rem;
+  z-index: 10;
+  position: relative;
+}
+
+.option__area {
+  position: absolute;
+  background-color: #bad8f9ea;
+  border-radius: 10px;
+  border: 3px solid #004aad;
+  z-index: 5;
+  width: calc(100% - 44px);
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.option__area--hidden {
+  display: none;
+}
+
+/* --- OPTION FORM --- */
+.optionForm__form {
+  color: #0a2343;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+}
+
+.optionForm__optionList {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.optionForm__submit {
+  border-radius: 5px;
+  background-color: white;
+  border: 2px solid #004aad;
+  color: #0a2343;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.optionForm__submit:hover {
+  border-radius: 5px;
+  background-color: #004aad;
+  border: 2px solid #fff;
+  color: white;
+  margin-top: 10px;
+}

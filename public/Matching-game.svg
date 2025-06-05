@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-3 {
+        fill: url(#Nepojmenovaný_přechod_11);
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        fill: #004aad;
+        font-family: Orbitron-Regular, Orbitron;
+        font-size: 21.76px;
+        font-variation-settings: 'wght' 400;
+      }
+    </style>
+    <linearGradient id="Nepojmenovaný_přechod_11" data-name="Nepojmenovaný přechod 11" x1="50" y1="95" x2="50" y2="5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#81b1fa"/>
+      <stop offset="1" stop-color="#bad9f8"/>
+    </linearGradient>
+  </defs>
+  <rect class="cls-5" width="100" height="100" rx="4.98" ry="4.98"/>
+  <rect class="cls-3" x="5" y="5" width="90" height="90"/>
+  <text class="cls-6" transform="translate(23.56 42.65)"><tspan x="0" y="0">t</tspan><tspan class="cls-4" x="8.92" y="0">e</tspan><tspan class="cls-2" x="23.54" y="0">c</tspan><tspan x="38.34" y="0">h</tspan><tspan x="-7.3" y="26.11">st</tspan><tspan class="cls-1" x="16.55" y="26.11">a</tspan><tspan class="cls-4" x="31.43" y="26.11">c</tspan><tspan x="46.12" y="26.11">k</tspan></text>
+</svg>
