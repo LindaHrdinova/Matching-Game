@@ -1,0 +1,18 @@
+.game__scoreCounter {
+  display: flex;
+  flex-direction: row;
+  color: green;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  background-color: yellow;
+}
+
+.game__attempCounter {
+  color: #004aad;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.player--active {
+  font-weight: 600;
+  text-decoration: underline;
+}

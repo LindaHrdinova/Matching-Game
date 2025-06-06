@@ -22,9 +22,9 @@ export const Option: React.FC<OptionProps> = ({
     onSetNumberOfPlayers(Number(formData.get('numOfPlayer')));
     setOptionHidden(true);
   };
-  {
-    console.log({ onSetAppLanguage, onSetNumberOfPlayers });
-  }
+
+  //console.log({ onSetAppLanguage, onSetNumberOfPlayers });
+
   return (
     <>
       <div className="option">

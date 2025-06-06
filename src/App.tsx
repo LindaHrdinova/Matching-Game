@@ -13,7 +13,6 @@ const App = () => {
         onSetNumberOfPlayers={setNumberOfPlayers}
         onSetAppLanguage={setAppLanguage}
       />
-      {console.log(numOfPlayers, appLanguage)}
       <GameTable numOfPlayers={numOfPlayers} />
     </>
   );

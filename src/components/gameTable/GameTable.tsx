@@ -2,6 +2,7 @@ import './style.css';
 import { Cards } from '../Cards/Cards';
 import { cardList as originalCardList } from '../../data/cardsData';
 import { useState, useEffect } from 'react';
+import { Players } from '../Players/Players';
 
 const fisherYatesShuffle = (list: typeof originalCardList) => {
   const newList = [...list];
@@ -27,6 +28,9 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
   );
   const [showRestartButton, setShowRestartButton] = useState<boolean>(false);
   const [attempCounter, setAttemptCounter] = useState<number>(0);
+  const [player1Points, setPlayer1Points] = useState<number>(0);
+  const [player2Points, setPlayer2Points] = useState<number>(0);
+  const [activePlayer1, setActivePlayer1] = useState<boolean>(true);
 
   useEffect(() => {
     setFlippedCards(Array(cardList.length).fill(false));
@@ -52,6 +56,9 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
     setFlippedCards(Array(cardList.length).fill(false));
     setPairsFound(0);
     setAttemptCounter(0);
+    setPlayer1Points(0);
+    setPlayer2Points(0);
+    setActivePlayer1(true);
     setShowRestartButton(false);
     setTimeout(() => {
       setCardList(fisherYatesShuffle(originalCardList));
@@ -62,15 +69,13 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
   return (
     <div className="game">
       <h1>Matching game</h1>
-      {numOfPlayers === 1 ? (
-        <p className="game__attempCounter">Attempts: {attempCounter}</p>
-      ) : (
-        <>
-          <p className="game__attempCounter">
-            Player 1 attempts: {attempCounter} | Player 2 attempts: 0
-          </p>
-        </>
-      )}
+      <Players
+        numOfPlayers={numOfPlayers}
+        attempCounter={attempCounter}
+        player1Points={player1Points}
+        player2Points={player2Points}
+        activePlayer1={activePlayer1}
+      />
 
       <div className="gameTable">
         <Cards
@@ -79,10 +84,16 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
           isBoardLocked={isBoardLocked}
           flippedCards={flippedCards}
           attempCounter={attempCounter}
+          player1Points={player1Points}
+          player2Points={player2Points}
+          activePlayer1={activePlayer1}
           onSetPairsFound={setPairsFound}
           onSetFlippedCards={setFlippedCards}
           onSetIsBoardLocked={setIsBoardLocked}
           onSetAttemptCounter={setAttemptCounter}
+          onSetPlayer1Points={setPlayer1Points}
+          onSetPlayer2Points={setPlayer2Points}
+          onSetActivePlayer1={setActivePlayer1}
         />
       </div>
       {showRestartButton ? <RestartButton /> : null}
