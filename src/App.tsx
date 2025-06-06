@@ -7,6 +7,8 @@ const App = () => {
   const [numOfPlayers, setNumberOfPlayers] = useState<number>(1);
   const [appLanguage, setAppLanguage] = useState<string>('en');
 
+  console.log(appLanguage);
+
   return (
     <>
       <Option
