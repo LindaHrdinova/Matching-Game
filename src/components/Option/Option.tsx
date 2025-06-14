@@ -2,16 +2,22 @@ import './style.css';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { IoPerson } from 'react-icons/io5';
 import { useState } from 'react';
+import cs from '../../texts/cs';
+import en from '../../texts/en';
 
 interface OptionProps {
+  appLanguage: string;
   onSetNumberOfPlayers: (num: number) => void;
   onSetAppLanguage: (arg: string) => void;
 }
 
 export const Option: React.FC<OptionProps> = ({
+  appLanguage,
   onSetNumberOfPlayers,
   onSetAppLanguage,
 }) => {
+  const texts = appLanguage === 'en' ? en : cs;
+
   const [optionHidden, setOptionHidden] = useState<boolean>(true);
 
   const handleSubmitOption = (e: React.FormEvent<HTMLFormElement>) => {
@@ -46,7 +52,7 @@ export const Option: React.FC<OptionProps> = ({
           >
             <div className="optionForm__optionList">
               <div className="optionForm__option">
-                <p>Number of players:</p>
+                <p>{texts.numOfPlayer}:</p>
                 <input
                   type="radio"
                   id="players1"
@@ -66,7 +72,7 @@ export const Option: React.FC<OptionProps> = ({
                 <br />
               </div>
               <div className="optionForm__option">
-                <p>Choose language:</p>
+                <p>{texts.chooseLanguage}:</p>
                 <input
                   type="radio"
                   id="languageEN"
@@ -89,7 +95,7 @@ export const Option: React.FC<OptionProps> = ({
             <input
               className="optionForm__submit"
               type="submit"
-              value="Accept"
+              value={texts.accept}
             />
           </form>
         </div>

@@ -4,6 +4,9 @@ import { cardList as originalCardList } from '../../data/cardsData';
 import { useState, useEffect } from 'react';
 import { Players } from '../Players/Players';
 
+import cs from '../../texts/cs';
+import en from '../../texts/en';
+
 const fisherYatesShuffle = (list: typeof originalCardList) => {
   const newList = [...list];
   for (let i = newList.length - 1; i > 0; i--) {
@@ -14,10 +17,14 @@ const fisherYatesShuffle = (list: typeof originalCardList) => {
 };
 
 interface GameTableProp {
+  appLanguage: string;
   numOfPlayers: number;
 }
 
-export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
+export const GameTable: React.FC<GameTableProp> = ({
+  appLanguage,
+  numOfPlayers,
+}) => {
   const [pairsFound, setPairsFound] = useState<number>(0);
   const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
   const [cardList, setCardList] = useState(() => {
@@ -31,6 +38,8 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
   const [player1Points, setPlayer1Points] = useState<number>(0);
   const [player2Points, setPlayer2Points] = useState<number>(0);
   const [activePlayer1, setActivePlayer1] = useState<boolean>(true);
+
+  const texts = appLanguage === 'en' ? en : cs;
 
   useEffect(() => {
     setFlippedCards(Array(cardList.length).fill(false));
@@ -47,7 +56,7 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
 
   const RestartButton = () => (
     <button className="game--btnRestartGame" onClick={handleRestartGame}>
-      new game
+      {texts.newGame}
     </button>
   );
 
@@ -70,6 +79,7 @@ export const GameTable: React.FC<GameTableProp> = ({ numOfPlayers }) => {
     <div className="game">
       <h1>Matching game</h1>
       <Players
+        appLanguage={appLanguage}
         numOfPlayers={numOfPlayers}
         attempCounter={attempCounter}
         player1Points={player1Points}

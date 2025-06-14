@@ -7,15 +7,18 @@ const App = () => {
   const [numOfPlayers, setNumberOfPlayers] = useState<number>(1);
   const [appLanguage, setAppLanguage] = useState<string>('en');
 
-  console.log(appLanguage);
+  useEffect(() => {
+    document.documentElement.lang = appLanguage;
+  }, [appLanguage]);
 
   return (
     <>
       <Option
+        appLanguage={appLanguage}
         onSetNumberOfPlayers={setNumberOfPlayers}
         onSetAppLanguage={setAppLanguage}
       />
-      <GameTable numOfPlayers={numOfPlayers} />
+      <GameTable appLanguage={appLanguage} numOfPlayers={numOfPlayers} />
     </>
   );
 };
