@@ -1,5 +1,5 @@
 import './style.css';
-import { IoMdOptions } from 'react-icons/io';
+import { IoSettingsSharp } from 'react-icons/io5';
 import { IoPerson } from 'react-icons/io5';
 import { useState } from 'react';
 
@@ -23,8 +23,6 @@ export const Option: React.FC<OptionProps> = ({
     setOptionHidden(true);
   };
 
-  //console.log({ onSetAppLanguage, onSetNumberOfPlayers });
-
   return (
     <>
       <div className="option">
@@ -34,7 +32,7 @@ export const Option: React.FC<OptionProps> = ({
             setOptionHidden(optionHidden ? false : true);
           }}
         >
-          <IoMdOptions className="option__icon" />
+          <IoSettingsSharp className="option__icon" />
         </button>
         <div
           className={

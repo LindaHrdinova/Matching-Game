@@ -31,7 +31,7 @@ export const Players: React.FC<playerProp> = ({
             <span
               className={activePlayer1 ? 'player' : 'player player--active'}
             >
-              Player 2{' '}
+              Player 2
             </span>{' '}
             pairs found: {player2Points}
           </p>

@@ -1,7 +1,7 @@
 import './App.css';
 import { GameTable } from './components/gameTable/GameTable';
 import { Option } from './components/Option/Option';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const App = () => {
   const [numOfPlayers, setNumberOfPlayers] = useState<number>(1);
