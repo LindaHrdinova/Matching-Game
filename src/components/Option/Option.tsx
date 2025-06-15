@@ -78,7 +78,7 @@ export const Option: React.FC<OptionProps> = ({
                   id="languageEN"
                   name="language"
                   value="en"
-                  defaultChecked
+                  defaultChecked={appLanguage === 'en' ? true : false}
                 />
                 <label htmlFor="languageEN">English</label>
                 <br />
@@ -87,6 +87,7 @@ export const Option: React.FC<OptionProps> = ({
                   id="languageCS"
                   name="language"
                   value="cs"
+                  defaultChecked={appLanguage === 'cs' ? true : false}
                 />
                 <label htmlFor="languageCS">Čeština</label>
                 <br />
