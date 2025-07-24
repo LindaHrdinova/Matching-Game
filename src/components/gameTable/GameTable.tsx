@@ -77,7 +77,6 @@ export const GameTable: React.FC<GameTableProp> = ({
 
   return (
     <div className="game">
-      <h1>Matching game</h1>
       <Players
         appLanguage={appLanguage}
         numOfPlayers={numOfPlayers}

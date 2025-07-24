@@ -101,6 +101,7 @@ export const Option: React.FC<OptionProps> = ({
           </form>
         </div>
       </div>
+      <h1>Matching game</h1>
     </>
   );
 };
