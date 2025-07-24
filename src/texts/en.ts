@@ -7,6 +7,9 @@ const texts = {
   numOfPlayer: 'Number of players',
   pairsFound: 'pairs found',
   newGame: 'new game',
+  noRecord: 'No record',
+  record: 'Best score',
+  recordAttempts: 'attempts',
 };
 
 export default texts;

@@ -16,11 +16,21 @@ const getInitialNumOfPlayer = (): number => {
   return stored === '2' ? 2 : 1;
 };
 
+const getInitialLeastAttempts = (): number | null => {
+  const stored = localStorage.getItem('leastAttempts');
+  console.log('stored ' + stored);
+
+  return stored === null ? null : Number(stored);
+};
+
 const App = () => {
   const [numOfPlayers, setNumberOfPlayers] = useState<number>(
     getInitialNumOfPlayer,
   );
   const [appLanguage, setAppLanguage] = useState<string>(getInitialLanguage);
+  const [leastAttempts, setLeastAttempts] = useState<number | null>(
+    getInitialLeastAttempts,
+  );
 
   useEffect(() => {
     document.documentElement.lang = appLanguage;
@@ -31,6 +41,16 @@ const App = () => {
     localStorage.setItem('numOfPlayer', String(numOfPlayers));
   }, [numOfPlayers]);
 
+  useEffect(() => {
+    if (leastAttempts !== null) {
+      localStorage.setItem('leastAttempts', String(leastAttempts));
+    }
+    console.log('useEffect ' + leastAttempts);
+  }, [leastAttempts]);
+
+  const stored = localStorage.getItem('leastAttempts');
+  console.log('app.tsx ' + stored);
+
   return (
     <>
       <Option
@@ -39,7 +59,12 @@ const App = () => {
         onSetNumberOfPlayers={setNumberOfPlayers}
         onSetAppLanguage={setAppLanguage}
       />
-      <GameTable appLanguage={appLanguage} numOfPlayers={numOfPlayers} />
+      <GameTable
+        appLanguage={appLanguage}
+        numOfPlayers={numOfPlayers}
+        leastAttempts={leastAttempts}
+        onSetLeastAttempts={setLeastAttempts}
+      />
     </>
   );
 };

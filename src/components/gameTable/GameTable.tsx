@@ -3,6 +3,7 @@ import { Cards } from '../Cards/Cards';
 import { cardList as originalCardList } from '../../data/cardsData';
 import { useState, useEffect } from 'react';
 import { Players } from '../Players/Players';
+import { GiPodium } from 'react-icons/gi';
 
 import cs from '../../texts/cs';
 import en from '../../texts/en';
@@ -19,11 +20,15 @@ const fisherYatesShuffle = (list: typeof originalCardList) => {
 interface GameTableProp {
   appLanguage: string;
   numOfPlayers: number;
+  leastAttempts: number | null;
+  onSetLeastAttempts: (arg: number | null) => void;
 }
 
 export const GameTable: React.FC<GameTableProp> = ({
   appLanguage,
   numOfPlayers,
+  leastAttempts,
+  onSetLeastAttempts,
 }) => {
   const [pairsFound, setPairsFound] = useState<number>(0);
   const [isBoardLocked, setIsBoardLocked] = useState<boolean>(false);
@@ -47,6 +52,15 @@ export const GameTable: React.FC<GameTableProp> = ({
 
   useEffect(() => {
     if (pairsFound === cardList.length / 2) {
+      console.log('AC ' + attempCounter);
+      console.log('LA ' + leastAttempts);
+      if (
+        leastAttempts === null ||
+        leastAttempts === 0 ||
+        attempCounter < leastAttempts
+      ) {
+        onSetLeastAttempts(attempCounter);
+      }
       const timeOutRestartButton = setTimeout(() => {
         setShowRestartButton(true);
       }, 600);
@@ -106,6 +120,16 @@ export const GameTable: React.FC<GameTableProp> = ({
         />
       </div>
       {showRestartButton ? <RestartButton /> : null}
+
+      <span
+        style={{ color: '#004aad', fontFamily: 'sans-serif', padding: '10px' }}
+      >
+        {' '}
+        <GiPodium />
+        {leastAttempts === null
+          ? texts.noRecord
+          : `${texts.record}: ${leastAttempts} ${texts.recordAttempts}`}
+      </span>
     </div>
   );
 };

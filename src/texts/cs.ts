@@ -1,12 +1,15 @@
 const texts = {
   players: 'Hráči',
   player: 'Hráč',
-  attempts: 'Pokusy',
+  attempts: 'pokusy',
   accept: 'Potvrdit',
   chooseLanguage: 'Vyber si jazyk',
   numOfPlayer: 'Počet hráčů',
   pairsFound: 'nalezené dvojice',
   newGame: 'nová hra',
+  noRecord: 'Žádný rekord',
+  record: 'Nejlepší výsledek',
+  recordAttempts: 'pokusů',
 };
 
 export default texts;
