@@ -35,6 +35,7 @@ const App = () => {
     <>
       <Option
         appLanguage={appLanguage}
+        numOfPlayers={numOfPlayers}
         onSetNumberOfPlayers={setNumberOfPlayers}
         onSetAppLanguage={setAppLanguage}
       />

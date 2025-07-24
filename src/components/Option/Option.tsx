@@ -7,12 +7,14 @@ import en from '../../texts/en';
 
 interface OptionProps {
   appLanguage: string;
+  numOfPlayers: number;
   onSetNumberOfPlayers: (num: number) => void;
   onSetAppLanguage: (arg: string) => void;
 }
 
 export const Option: React.FC<OptionProps> = ({
   appLanguage,
+  numOfPlayers,
   onSetNumberOfPlayers,
   onSetAppLanguage,
 }) => {
@@ -58,13 +60,19 @@ export const Option: React.FC<OptionProps> = ({
                   id="players1"
                   name="numOfPlayer"
                   value="1"
-                  defaultChecked
+                  defaultChecked={numOfPlayers === 1 ? true : false}
                 />
                 <label htmlFor="players1">
                   <IoPerson />
                 </label>
                 <br />
-                <input type="radio" id="2" name="numOfPlayer" value="2" />
+                <input
+                  type="radio"
+                  id="2"
+                  name="numOfPlayer"
+                  value="2"
+                  defaultChecked={numOfPlayers === 2 ? true : false}
+                />
                 <label htmlFor="2">
                   <IoPerson />
                   <IoPerson />
