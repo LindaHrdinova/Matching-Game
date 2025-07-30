@@ -1,6 +1,6 @@
 import './style.css';
-import cs from '../../texts/cs';
-import en from '../../texts/en';
+import { PlayersOne } from '../PlayersOne/PlayersOne';
+import { PlayersTwo } from '../PlayersTwo/PlayersTwo';
 
 interface playerProp {
   appLanguage: string;
@@ -19,30 +19,18 @@ export const Players: React.FC<playerProp> = ({
   player2Points,
   activePlayer1,
 }) => {
-  const texts = appLanguage === 'en' ? en : cs;
-
   return (
     <>
       {numOfPlayers === 1 ? (
-        <p className="game__attempCounter">
-          {texts.attempts}: {attempCounter}
-        </p>
+        <PlayersOne appLanguage={appLanguage} attempCounter={attempCounter} />
       ) : (
         <>
-          <p className="game__attempCounter">
-            <span
-              className={activePlayer1 ? 'player player--active' : 'player'}
-            >
-              {texts.player} 1
-            </span>{' '}
-            {texts.pairsFound}: {player1Points} |{' '}
-            <span
-              className={activePlayer1 ? 'player' : 'player player--active'}
-            >
-              {texts.player} 2
-            </span>{' '}
-            {texts.pairsFound}: {player2Points}
-          </p>
+          <PlayersTwo
+            appLanguage={appLanguage}
+            player1Points={player1Points}
+            player2Points={player2Points}
+            activePlayer1={activePlayer1}
+          />
         </>
       )}
     </>

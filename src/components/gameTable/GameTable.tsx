@@ -52,8 +52,6 @@ export const GameTable: React.FC<GameTableProp> = ({
 
   useEffect(() => {
     if (pairsFound === cardList.length / 2) {
-      console.log('AC ' + attempCounter);
-      console.log('LA ' + leastAttempts);
       if (
         leastAttempts === null ||
         leastAttempts === 0 ||

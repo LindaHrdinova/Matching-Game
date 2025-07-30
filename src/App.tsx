@@ -18,7 +18,7 @@ const getInitialNumOfPlayer = (): number => {
 
 const getInitialLeastAttempts = (): number | null => {
   const stored = localStorage.getItem('leastAttempts');
-  console.log('stored ' + stored);
+  //console.log('stored ' + stored);
 
   return stored === null ? null : Number(stored);
 };
@@ -45,11 +45,11 @@ const App = () => {
     if (leastAttempts !== null) {
       localStorage.setItem('leastAttempts', String(leastAttempts));
     }
-    console.log('useEffect ' + leastAttempts);
+    //console.log('useEffect ' + leastAttempts);
   }, [leastAttempts]);
 
-  const stored = localStorage.getItem('leastAttempts');
-  console.log('app.tsx ' + stored);
+  //const stored = localStorage.getItem('leastAttempts');
+  //console.log('app.tsx ' + stored);
 
   return (
     <>
